@@ -1,0 +1,3 @@
+using System.Net.Http.Headers; using System.Net.Http.Json; using System.Text; using System.Text.Json;
+namespace RaceDay.Web;
+public class ApiClient(HttpClient http,IHttpContextAccessor? accessor=null) { readonly JsonSerializerOptions json=new(){PropertyNameCaseInsensitive=true}; void Auth(){var token=accessor?.HttpContext?.Session.GetString("token");if(!string.IsNullOrWhiteSpace(token))http.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Bearer",token);} public async Task<T?> Get<T>(string path){Auth();return await http.GetFromJsonAsync<T>(path,json);} public async Task<HttpResponseMessage> Post(string path,object body){Auth();return await http.PostAsync(path,new StringContent(JsonSerializer.Serialize(body),Encoding.UTF8,"application/json"));} }

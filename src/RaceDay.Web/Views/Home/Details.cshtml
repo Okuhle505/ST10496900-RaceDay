@@ -1,0 +1,2 @@
+@model JsonElement
+@{Layout="_Layout";}<h1>@Model.GetProperty("eventName").GetString()</h1><p>@Model.GetProperty("description").GetString()</p><p>@Model.GetProperty("location").GetString() | @Model.GetProperty("distance").GetDecimal() km</p><h2>Categories</h2>@foreach(var c in Model.GetProperty("categories").EnumerateArray()){<p>@c.GetProperty("categoryName").GetString() (@c.GetProperty("entryFee").GetDecimal())</p>}

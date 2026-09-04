@@ -1,0 +1,2 @@
+@model JsonElement[]
+@{Layout="_Layout";}<h1>My results</h1>@foreach(var x in Model){<p>Position @x.GetProperty("position").GetInt32(), time @x.GetProperty("finishTime").GetString()</p>}

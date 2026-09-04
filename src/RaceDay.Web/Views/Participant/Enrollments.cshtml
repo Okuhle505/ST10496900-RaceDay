@@ -1,0 +1,2 @@
+@model JsonElement[]
+@{Layout="_Layout";}<h1>My enrolments</h1>@foreach(var x in Model){<p>Bib: @x.GetProperty("bibNumber").GetString() - @x.GetProperty("status").GetString()</p>}

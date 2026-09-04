@@ -1,0 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+namespace RaceDay.Api;
+public class RaceDayDbContext(DbContextOptions<RaceDayDbContext> options) : DbContext(options) {
+ public DbSet<User> Users => Set<User>(); public DbSet<Organizer> Organizers => Set<Organizer>(); public DbSet<Participant> Participants => Set<Participant>(); public DbSet<Event> Events => Set<Event>(); public DbSet<Category> Categories => Set<Category>(); public DbSet<Enrollment> Enrollments => Set<Enrollment>(); public DbSet<Result> Results => Set<Result>();
+ protected override void OnModelCreating(ModelBuilder b) { b.Entity<User>().HasIndex(x=>x.Username).IsUnique(); b.Entity<User>().HasIndex(x=>x.Email).IsUnique(); b.Entity<User>().HasOne(x=>x.Organizer).WithOne(x=>x.User).HasForeignKey<Organizer>(x=>x.UserId); b.Entity<User>().HasOne(x=>x.Participant).WithOne(x=>x.User).HasForeignKey<Participant>(x=>x.UserId); b.Entity<Event>().Property(x=>x.Distance).HasPrecision(8,2); b.Entity<Category>().Property(x=>x.Distance).HasPrecision(8,2); b.Entity<Category>().Property(x=>x.EntryFee).HasPrecision(10,2); b.Entity<Enrollment>().HasIndex(x=>new{x.ParticipantId,x.CategoryId}).IsUnique(); b.Entity<Result>().HasIndex(x=>x.EnrollmentId).IsUnique(); }
+}

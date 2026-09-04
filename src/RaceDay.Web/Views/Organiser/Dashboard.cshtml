@@ -1,0 +1,2 @@
+@model JsonElement[]
+@{Layout="_Layout";}<h1>Organiser dashboard</h1><p>Manage your events, categories, enrolments and results through the secured API.</p>@foreach(var e in Model){<p>@e.GetProperty("eventName").GetString()</p>}

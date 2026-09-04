@@ -1,0 +1,2 @@
+@model JsonElement[]
+@{Layout="_Layout";}<h1>RaceDay events</h1>@foreach(var e in Model){<article><h2>@e.GetProperty("eventName").GetString()</h2><p>@e.GetProperty("eventDate").GetString() - @e.GetProperty("location").GetString()</p><a asp-action="Details" asp-route-id="@e.GetProperty("eventId").GetInt32()">View event</a></article>}

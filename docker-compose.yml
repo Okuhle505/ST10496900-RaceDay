@@ -1,0 +1,19 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: RaceDay!2026Secure
+    ports: ["1433:1433"]
+  api:
+    build: ./src/RaceDay.Api
+    environment:
+      ConnectionStrings__RaceDay: Server=sqlserver;Database=RaceDayDb;User Id=sa;Password=RaceDay!2026Secure;TrustServerCertificate=True
+    ports: ["8080:8080"]
+    depends_on: [sqlserver]
+  web:
+    build: ./src/RaceDay.Web
+    environment:
+      Api__BaseUrl: http://api:8080/
+    ports: ["8081:8080"]
+    depends_on: [api]
