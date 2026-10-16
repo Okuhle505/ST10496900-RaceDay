@@ -47,7 +47,7 @@ namespace RaceDay.Api.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,7 +72,7 @@ namespace RaceDay.Api.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,7 +100,7 @@ namespace RaceDay.Api.Migrations
                         column: x => x.OrganizerId,
                         principalTable: "Organizers",
                         principalColumn: "OrganizerId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,7 +124,7 @@ namespace RaceDay.Api.Migrations
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "EventId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,13 +148,13 @@ namespace RaceDay.Api.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Enrollments_Participants_ParticipantId",
                         column: x => x.ParticipantId,
                         principalTable: "Participants",
                         principalColumn: "ParticipantId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,7 +176,7 @@ namespace RaceDay.Api.Migrations
                         column: x => x.EnrollmentId,
                         principalTable: "Enrollments",
                         principalColumn: "EnrollmentId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

@@ -315,7 +315,7 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.Event", "Event")
                         .WithMany("Categories")
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Event");
@@ -326,13 +326,13 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.Category", "Category")
                         .WithMany("Enrollments")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("RaceDay.Api.Participant", "Participant")
                         .WithMany("Enrollments")
                         .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -345,7 +345,7 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.Organizer", "Organizer")
                         .WithMany("Events")
                         .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Organizer");
@@ -356,7 +356,7 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.User", "User")
                         .WithOne("Organizer")
                         .HasForeignKey("RaceDay.Api.Organizer", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -367,7 +367,7 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.User", "User")
                         .WithOne("Participant")
                         .HasForeignKey("RaceDay.Api.Participant", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -378,7 +378,7 @@ namespace RaceDay.Api.Migrations
                     b.HasOne("RaceDay.Api.Enrollment", "Enrollment")
                         .WithOne("Result")
                         .HasForeignKey("RaceDay.Api.Result", "EnrollmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Enrollment");
