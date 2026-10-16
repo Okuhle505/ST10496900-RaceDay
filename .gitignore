@@ -3,3 +3,6 @@ obj/
 .vs/
 *.user
 appsettings.Development.json
+work/.dotnet-cli/
+work/.nuget/
+work/.appdata/
